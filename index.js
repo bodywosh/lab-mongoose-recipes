@@ -13,11 +13,33 @@ mongoose
   .then(x => {
     console.log(`Connected to the database: "${x.connection.name}"`);
     // Before adding any recipes to the database, let's remove all existing ones
-    return Recipe.deleteMany()
+    return //Recipe.deleteMany()
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    /*const newRecipe = Recipe.create({
+      title: "Saucisson Nutella",
+      level: "Amateur Chef",
+      ingredients: [
+        "1/2 Nutella",
+        "5 Saucisson",
+      ],
+      cuisine: "Comfort food",
+      dishType: "main_course",
+      duration: 40,
+      creator: "Chef Tristan"
+    })*/
+    //Recipe.insertMany(data)
+    const query = { title: "Rigatoni alla Genovese" };
+    
+    //return Recipe.findOneAndUpdate(query, { duration: 100})
+    return Recipe.deleteOne({ title: 'Carrot Cake' })
+  })
+  .then(() => {
+    return mongoose.connection.close()
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+  
